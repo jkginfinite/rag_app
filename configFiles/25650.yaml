@@ -1,0 +1,7 @@
+chunk_size: 256
+overlap: 50
+text_docs: null
+load_model: model_file/embeddings
+embedding_model: intfloat/e5-large-v2
+retrieval_model: model_file/llms/mistral-7b-instruct-v0.2.Q4_K_M.gguf
+ranking_model: BAAI/bge-reranker-large
