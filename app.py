@@ -22,7 +22,6 @@ load_model = config['load_model']
 embedding_model = config['embedding_model']
 retrieval_model = config['retrieval_model']
 ranking_model = config['ranking_model']
-retrieval_model = config['retrieval_model']
 rag = RAG(load_model,text_docs, chunk_size, overlap, embedding_model, ranking_model, retrieval_model)
 
 
