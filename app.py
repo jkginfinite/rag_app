@@ -30,6 +30,10 @@ rag = RAG(load_model,text_docs, chunk_size, overlap, embedding_model, ranking_mo
 def home():
     return '✅ Your Flask app is running on Render!'
 
+@app.route('/', methods=["GET"])
+def index():
+    return "Hello from RAG backend!"
+
 @app.route('/ask', methods=['POST'])
 def ask():
     data = request.get_json()
