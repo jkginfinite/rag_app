@@ -16,7 +16,7 @@ def load_config(path=f"configFiles/{configFile}"):
 
 config = load_config()
 chunk_size = config['chunk_size']
-overlap = config['ovelap']
+overlap = config['overlap']
 text_docs = config['text_docs']
 load_model = config['load_model']
 embedding_model = config['embedding_model']
