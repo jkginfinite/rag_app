@@ -2,10 +2,8 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 from rag import RAG
 import yaml
-
-
-
-
+from flask_cors import CORS
+CORS(app)
 
 
 configFile = '25650.yaml'
