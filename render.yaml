@@ -1,7 +1,17 @@
 services:
   - type: web
-    name: simple-flask-api
+    name: rag-app
     env: python
-    plan: free
-    buildCommand: ""
-    startCommand: gunicorn app:app
+    plan: starter
+    buildCommand: |
+      pip install -r requirements.txt
+      pip install gdown
+    startCommand: |
+      mkdir -p models && \
+      if [ ! -f models/mistral-7b-instruct-v0.2.Q4_K_M.gguf ]; then \
+        gdown --id 1d0aNc8SLgCnPFzBfFWZT_kQMALNyUwRV -O models/mistral-7b-instruct-v0.2.Q4_K_M.gguf; \
+      fi && \
+      python app.py
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
