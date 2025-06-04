@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 from rag import RAG
 import yaml
+import os
+
 from flask_cors import CORS
 CORS(app)
 
@@ -43,5 +45,6 @@ def ask():
         "answer": f"{answer}" #f"You asked: '{question}' — here's a simple placeholder response."
     })
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
