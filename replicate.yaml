@@ -1,0 +1,13 @@
+# replicate.yaml
+name: jkginfinite/rag_app
+gpu: false  # change to true if you need a GPU
+python_version: "3.10"
+system_packages:
+  - build-essential
+  - cmake
+  - libssl-dev
+  - libffi-dev
+  - git
+python_packages:
+  - -r requirements.txt
+predict: "rag:predict"

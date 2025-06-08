@@ -7,6 +7,8 @@ import os
 from flask_cors import CORS
 CORS(app)
 
+app = Flask(__name__)
+
 
 configFile = '25650.yaml'
 def load_config(path=f"configFiles/{configFile}"):
@@ -45,6 +47,20 @@ def ask():
         "answer": f"{answer}" #f"You asked: '{question}' — here's a simple placeholder response."
     })
 
+def predict(input: str) -> str:
+    answer = rag.ask(input)
+    return jsonify({
+        "question": question,
+        "answer": f"{answer}" #f"You asked: '{question}' — here's a simple placeholder response."
+    })
+    return "You asked: " + input  # Replace with your actual RAG logic
+
+@app.route("/predict", methods=["POST"])
+def handle_predict():
+    data = request.get_json()
+    question = data.get("input", "")
+    response = predict(question)
+    return jsonify({"response": response})
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=5000)

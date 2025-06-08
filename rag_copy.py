@@ -191,4 +191,7 @@ questions = [
 ]
 
 
-print(rag.ask(questions[0]))
+#print(rag.ask(questions[0]))
+
+def predict(input: str) -> str:
+    return "Response to: "+rag.ask(input)
